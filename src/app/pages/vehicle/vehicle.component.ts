@@ -1,29 +1,53 @@
-import { Component } from '@angular/core';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Vehicle } from 'src/app/model/vehicle';
+import { VehiclesService } from 'src/app/service/vehicles.service';
 
 @Component({
   selector: 'app-vehicle',
   templateUrl: './vehicle.component.html',
   styleUrls: ['./vehicle.component.css'],
 })
-export class VehicleComponent {
-  displayedColumns: string[] = ['demo-position', 'demo-name', 'demo-weight', 'demo-symbol'];
-  myDataSource: PeriodicElement[] = [
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-    {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-    {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-    {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-    {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-    {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-    {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-    {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-    {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-    {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  ];
+export class VehicleComponent implements OnInit {
+
+  myDataSource: Vehicle[] = [];
+  displayedColumns: string[] = ['Id', 'Manufacturer', 'Model', 'Year', 'Price', 'Reserved', 'Actions'];
+
+  constructor(private _vehicleService: VehiclesService,
+    private _snackbar: MatSnackBar) {}
+
+  ngOnInit(): void {
+      this.onGetAll();
+  }
+
+  onGetAll() {
+    this._vehicleService.getAll().subscribe({
+      next: (data) => {
+        this.myDataSource = data;
+      },
+      error: (err) => {
+        this._snackbar.open("Something went wrong :/")
+          ._dismissAfter(2000);
+      },
+      complete: () => {
+        this._snackbar.open("Vehicles loaded.")
+          ._dismissAfter(2000);
+      },
+    })
+  }
+
+  onSave(id: number) {
+    // TODO
+    // Si el id es null, crear nuevo
+    if (!id) {
+
+    } else {
+      // Sino, actualizar existente
+    }
+  }
+
+  onDelete(id: number) {
+    // TODO
+  }
+
 }

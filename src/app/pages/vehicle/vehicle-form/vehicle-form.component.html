@@ -1,0 +1,43 @@
+<form class="example-container" [formGroup]="form!" #frmVehicle="ngForm" (submit)="operate()">
+
+    <div [hidden]="true">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="ID" required formControlName="id">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Manufacturer" required formControlName="manufacturer">  
+        <!-- <small *ngIf="f['manufacturer'].errors?.['required'] && f['manufacturer'].touched" class="invalid">Is required</small>
+        <small *ngIf="f['manufacturer'].errors?.['minlength'] && f['manufacturer'].touched" class="invalid">Minlength is 3</small> -->
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Model" required formControlName="model">  
+        <!-- <small *ngIf="f['model'].errors?.['required'] && f['model'].touched" class="invalid">Is required</small>
+        <small *ngIf="f['model'].errors?.['minlength'] && f['model'].touched" class="invalid">Minlength is 3</small> -->
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Year" required formControlName="year">  
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Price" required formControlName="price">  
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <!-- <mat-slide-toggle required formControlName="reserved">Reserved</mat-slide-toggle> -->
+        <input matInput placeholder="Reserved" required formControlName="reserved">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" >
+        <mat-icon>done</mat-icon>
+        <span>Done</span>
+    </button>
+
+    <button mat-raised-button color="accent" type="button" routerLink="/pages/vehicles">
+        <mat-icon>cancel</mat-icon>
+        <span>Cancel</span>
+    </button>
+</form>
