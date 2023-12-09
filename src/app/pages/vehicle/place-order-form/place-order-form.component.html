@@ -1,0 +1,33 @@
+<form [formGroup]="form" (ngSubmit)="onSave()">
+    <!-- Car dropdown -->
+    <mat-form-field>
+        <mat-label>Car</mat-label>
+        <mat-select formControlName="carId">
+            <ng-container *ngFor="let data of dropdownData">
+                <mat-option [value]="data.id">{{data.manufacturer}} {{data.model}} {{data.year}}</mat-option>
+            </ng-container>
+        </mat-select>
+    </mat-form-field>
+
+    <!-- StartTime and EndTime -->
+    <mat-form-field>
+        <mat-label>Rent period</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate placeholder="Start date" formControlName="startTime">
+            <input matEndDate placeholder="End date" formControlName="endTime">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+    
+    <button mat-raised-button color="primary" type="submit" >
+        <mat-icon>done</mat-icon>
+        <span>Done</span>
+    </button>
+
+    <button mat-raised-button color="accent" type="button" routerLink="/pages/vehicles">
+        <mat-icon>cancel</mat-icon>
+        <span>Cancel</span>
+    </button>
+</form>

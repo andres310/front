@@ -2,7 +2,13 @@
     <span>Parcial 4</span>
 
     <a routerLink="/pages/vehicles">
-        aaa
+        Vehicles
+    </a>
+
+    <a routerLink="/pages/orders">
+        Orders
     </a>
 </mat-toolbar>
-<router-outlet></router-outlet>
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+    <router-outlet></router-outlet>
+</div>

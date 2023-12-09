@@ -16,6 +16,7 @@ export class VehiclesService {
 
   constructor(private _baseService: BaseService) { }
 
+  // .NET
   getAll(): Observable<Vehicle[]> {
     return this._baseService.get<Vehicle[]>(this.url, this.requestUrl);
   }
@@ -25,11 +26,11 @@ export class VehiclesService {
   }
 
   save(vehicle: Vehicle): Observable<Vehicle> {
-    return this._baseService.post(this.url, this.requestUrl, vehicle);
+    return this._baseService.post<Vehicle>(this.url, this.requestUrl, vehicle);
   }
 
   update(id: number, vehicle: Vehicle): Observable<Vehicle> {
-    return this._baseService.put(this.url, `${this.requestUrl}/${id}`, vehicle);
+    return this._baseService.put<Vehicle>(this.url, `${this.requestUrl}/${id}`, vehicle);
   }
 
   delete(id: number): Observable<any> {

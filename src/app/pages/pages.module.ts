@@ -7,6 +7,8 @@ import { VehicleComponent } from './vehicle/vehicle.component';
 import { LayoutComponent } from './layout/layout.component';
 import { VehicleFormComponent } from './vehicle/vehicle-form/vehicle-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PlaceOrderComponent } from './vehicle/place-order/place-order.component';
+import { PlaceOrderFormComponent } from './vehicle/place-order-form/place-order-form.component';
 
 
 
@@ -14,7 +16,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     LayoutComponent,
     VehicleComponent,
-    VehicleFormComponent
+    VehicleFormComponent,
+    PlaceOrderComponent,
+    PlaceOrderFormComponent
   ],
   imports: [
     CommonModule,

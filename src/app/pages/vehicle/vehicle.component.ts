@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { PlaceOrder } from 'src/app/model/place-order';
 import { Vehicle } from 'src/app/model/vehicle';
+import { VehicleTransactionalService } from 'src/app/service/vehicle-transactional.service';
 import { VehiclesService } from 'src/app/service/vehicles.service';
 
 @Component({
@@ -14,6 +16,7 @@ export class VehicleComponent implements OnInit {
   displayedColumns: string[] = ['Id', 'Manufacturer', 'Model', 'Year', 'Price', 'Reserved', 'Actions'];
 
   constructor(private _vehicleService: VehiclesService,
+    private _transactionalService: VehicleTransactionalService,
     private _snackbar: MatSnackBar) {}
 
   ngOnInit(): void {
@@ -36,18 +39,17 @@ export class VehicleComponent implements OnInit {
     })
   }
 
-  onSave(id: number) {
-    // TODO
-    // Si el id es null, crear nuevo
-    if (!id) {
-
-    } else {
-      // Sino, actualizar existente
-    }
-  }
-
   onDelete(id: number) {
-    // TODO
+    this._vehicleService.delete(id).subscribe({
+      next: (n) => {},
+      error: (e) => {
+        console.error(e);
+      },
+      complete: () => {
+        this._snackbar.open("Vehicles deleted.")
+        ._dismissAfter(2000);
+      }
+    })
   }
 
 }
