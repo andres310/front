@@ -22,7 +22,7 @@ export class PlaceOrderFormComponent implements OnInit {
     model:  [{ value: 0, disabled: true }, [Validators.required]],
     startTime:  [{ value: new Date() }, [Validators.required]],
     endTime:  [{ value: new Date() }, [Validators.required]],
-    email:  [{ value: new Date() }, [Validators.required]]
+    email:  ['ia.andresalexander@ufg.edu.sv', [Validators.required]]
   });
 
   constructor(

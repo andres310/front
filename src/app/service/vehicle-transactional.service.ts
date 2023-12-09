@@ -42,6 +42,10 @@ export class VehicleTransactionalService {
     return this._baseService.post<PlaceOrder>(this.url, '/orders', placeOrder);
   }
 
+  deleteOrder(id: number): Observable<any> {
+    return this._baseService.delete(this.url, `/orders/${id}`);
+  }
+
   // no c pa q son
   setMessageChange(message: string){
     this.messageChange.next(message);

@@ -67,7 +67,21 @@ export class PlaceOrderComponent implements OnInit {
     })
   }
 
-  onDelete() {
-    
+  onDelete(id: number) {
+    this._transactionalService.deleteOrder(id).subscribe({
+      next: (data) => {
+        this._snackbar.open(data.message)
+        ._dismissAfter(2000);
+        let newDataSource = this.dataSource?.filter(po => po.id !== data.id);
+        this.dataSource = newDataSource;
+      },
+      error: (e) => {
+        console.error(e);
+        /*this._snackbar.open("Deletion went wrong :/")
+        ._dismissAfter(2000);*/
+      },
+      complete: () => {
+      }
+    })
   }
 }
