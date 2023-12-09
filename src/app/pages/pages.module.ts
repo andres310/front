@@ -9,6 +9,7 @@ import { VehicleFormComponent } from './vehicle/vehicle-form/vehicle-form.compon
 import { ReactiveFormsModule } from '@angular/forms';
 import { PlaceOrderComponent } from './vehicle/place-order/place-order.component';
 import { PlaceOrderFormComponent } from './vehicle/place-order-form/place-order-form.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 
 
@@ -18,7 +19,8 @@ import { PlaceOrderFormComponent } from './vehicle/place-order-form/place-order-
     VehicleComponent,
     VehicleFormComponent,
     PlaceOrderComponent,
-    PlaceOrderFormComponent
+    PlaceOrderFormComponent,
+    StatisticsComponent
   ],
   imports: [
     CommonModule,

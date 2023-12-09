@@ -26,16 +26,16 @@ export class VehicleTransactionalService {
     return this._baseService.get<PlaceOrder[]>(this.url, '/orders');
   }
 
-  getMostRentedCars(): Observable<MostRentedCar> {
-    return this._baseService.get<MostRentedCar>(this.url, '/most-rented-cars');
+  getMostRentedCars(month: number = 12): Observable<MostRentedCar[]> {
+    return this._baseService.get<MostRentedCar[]>(this.url, `/most-rented-cars?month=${month}`);
   }
   
-  getNumberOfVehiclesPerUser(): Observable<NumberVehiclesUser> {
-    return this._baseService.get<NumberVehiclesUser>(this.url, '/vehicles-per-user');
+  getNumberOfVehiclesPerUser(): Observable<NumberVehiclesUser[]> {
+    return this._baseService.get<NumberVehiclesUser[]>(this.url, '/vehicles-per-user');
   }
 
-  getRentalCountPerVehicle(): Observable<RentalCountPerVehicle> {
-    return this._baseService.get<RentalCountPerVehicle>(this.url, '/rental-count-per-vehicle');
+  getRentalCountPerVehicle(): Observable<RentalCountPerVehicle[]> {
+    return this._baseService.get<RentalCountPerVehicle[]>(this.url, '/rental-count-per-vehicle');
   }
 
   submitOrder(placeOrder: PlaceOrder): Observable<PlaceOrder> {

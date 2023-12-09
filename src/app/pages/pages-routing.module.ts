@@ -4,6 +4,7 @@ import { VehicleComponent } from './vehicle/vehicle.component';
 import { VehicleFormComponent } from './vehicle/vehicle-form/vehicle-form.component';
 import { PlaceOrderComponent } from './vehicle/place-order/place-order.component';
 import { PlaceOrderFormComponent } from './vehicle/place-order-form/place-order-form.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 export const routes: Routes = [
   {
@@ -16,7 +17,8 @@ export const routes: Routes = [
     path: 'orders', component: PlaceOrderComponent, children: [
       { path: 'new/:userId', component: PlaceOrderFormComponent },
     ]
-  }
+  },
+  { path: 'stats', component: StatisticsComponent }
 ];
 
 @NgModule({

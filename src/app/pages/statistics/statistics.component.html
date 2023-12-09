@@ -1,0 +1,73 @@
+<mat-tab-group>
+    <mat-tab label="Most Rented">
+        <mat-form-field>
+            <mat-label>Month</mat-label>
+            <mat-select (selectionChange)="onMonthChange($event)">
+                <ng-container *ngFor="let m of months">
+                    <mat-option [value]="m.id">{{m.name}}</mat-option>
+                </ng-container>
+            </mat-select>
+          </mat-form-field>
+        <table mat-table [dataSource]="mostRented!" class="mat-elevation-z8 demo-table">
+            <!-- carsition Column -->
+            <ng-container matColumnDef="CarId">
+                <th mat-header-cell *matHeaderCellDef> Car Id </th>
+                <td mat-cell *matCellDef="let car"> {{ car.carId }} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="Model">
+                <th mat-header-cell *matHeaderCellDef> Model </th>
+                <td mat-cell *matCellDef="let car"> {{ car.model }} </td>
+            </ng-container>
+        
+            <!-- Weight Column -->
+            <ng-container matColumnDef="RentalCount">
+                <th mat-header-cell *matHeaderCellDef> RentalCount </th>
+                <td mat-cell *matCellDef="let car"> {{ car.rentalCount }} </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayColumnsMostRented"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayColumnsMostRented;"></tr>
+        </table>
+    </mat-tab>
+
+    <mat-tab label="Vehicles Per User">
+        <table mat-table [dataSource]="vehiclesPerUser!" class="mat-elevation-z8 demo-table">
+            <!-- carsition Column -->
+            <ng-container matColumnDef="UserId">
+                <th mat-header-cell *matHeaderCellDef> User Id </th>
+                <td mat-cell *matCellDef="let car"> {{ car.userId }} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="VehicleCount">
+                <th mat-header-cell *matHeaderCellDef> Vehicle Count </th>
+                <td mat-cell *matCellDef="let car"> {{ car.vehicleCount }} </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayColumnsPerUser"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayColumnsPerUser;"></tr>
+        </table>
+    </mat-tab>
+
+    <mat-tab label="Rental Count Per Vehicle">
+        <table mat-table [dataSource]="rentalCountPerVehicle!" class="mat-elevation-z8 demo-table">
+            <!-- carsition Column -->
+            <ng-container matColumnDef="Model">
+                <th mat-header-cell *matHeaderCellDef> Model </th>
+                <td mat-cell *matCellDef="let car"> {{ car.model }} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="RentalCount">
+                <th mat-header-cell *matHeaderCellDef> Rental Count </th>
+                <td mat-cell *matCellDef="let car"> {{ car.rentalCount }} </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayColumnsRentalPerVehicle"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayColumnsRentalPerVehicle;"></tr>
+        </table>
+    </mat-tab>
+</mat-tab-group>
+  
