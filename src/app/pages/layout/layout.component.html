@@ -12,6 +12,11 @@
     <a routerLink="/pages/stats">
         Statistics
     </a>
+
+    
+    <a type="button" class="btn btn-danger mx-2"  (click)="logout()">
+        Cerrar Sesión
+    </a>
 </mat-toolbar>
 <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
     <router-outlet></router-outlet>
