@@ -67,5 +67,7 @@ export class PlaceOrderComponent implements OnInit {
     })
   }
 
-  operate() {}
+  onDelete() {
+    
+  }
 }

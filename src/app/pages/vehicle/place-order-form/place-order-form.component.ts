@@ -21,7 +21,8 @@ export class PlaceOrderFormComponent implements OnInit {
     carId:  [{ value: 0 }, [Validators.required]],
     model:  [{ value: 0, disabled: true }, [Validators.required]],
     startTime:  [{ value: new Date() }, [Validators.required]],
-    endTime:  [{ value: new Date() }, [Validators.required]]
+    endTime:  [{ value: new Date() }, [Validators.required]],
+    email:  [{ value: new Date() }, [Validators.required]]
   });
 
   constructor(
@@ -57,21 +58,29 @@ export class PlaceOrderFormComponent implements OnInit {
   }
 
   onSave() {
-    let index = this.form.get('carId');
+    const index = this.form!.get('carId')?.value ?? 0;
+    let v = this.dropdownData?.at(index - 1);
     let data = { 
       ...this.form.value,
-      //model: this.dropdownData[index]
+      userId: this.userId,
+      model: v?.model
     }
     this.transactionalService.submitOrder(data).subscribe({
       next: (n) => {
-
+        v!.reserved = true;
+        this.vehicleService.update(index, v!).subscribe(data => {
+          this.snackbar.open("Vehicle updated :|")
+          ._dismissAfter(2000);
+        })
       },
       error: (e) => {
         console.error(e);
       },
       complete: () => {
+        
         this.snackbar.open("Order submitted :D")
           ._dismissAfter(2000);
+
       }
     });
   }
